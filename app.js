@@ -8,6 +8,8 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
+const passport = require("passport");
+const session = require("express-session");
 
 mongoose
   .connect(
@@ -29,6 +31,17 @@ const debug = require("debug")(
 );
 
 const app = express();
+
+app.use(
+  session({
+    secret: 12345, //process.env.SECRET,
+    resave: true,
+    saveUninitialized: true
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Middleware Setup
 app.use(logger("dev"));
@@ -55,6 +68,8 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 app.locals.title = "Express - Generated with IronGenerator";
 
 const index = require("./routes/index");
+const auth = require("/routes/auth");
 app.use("/", index);
+app.use("/auth", auth);
 
 module.exports = app;
