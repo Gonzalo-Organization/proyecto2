@@ -14,7 +14,8 @@ const reviewSchema = new Schema({
   client: {
     type: Schema.Types.ObjectId,
     ref: "Client"
-  }
+  },
+  raiting: Number
 });
 
 module.exports = mongoose.model("Review", reviewSchema);
