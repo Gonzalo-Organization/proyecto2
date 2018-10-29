@@ -6,16 +6,20 @@ const userSchema = new Schema(
   {
     name: {
       type: String,
-      required: "El nombre es obligatorio"
+      required: "Campo de nombre es obligatorio"
     },
     last_name: {
       type: String,
-      required: "El apellido es obligatorio"
+      required: "Campo de apellido es obligatorio"
     },
     email: {
       type: String,
       unique: true,
-      required: true
+      required: "Campo de email es obligatorio"
+    },
+    gender: {
+      type: String,
+      required: "Campo de genero es obligatorio"
     },
     active: {
       type: Boolean,
@@ -28,8 +32,27 @@ const userSchema = new Schema(
       enum: ["ADMIN", "MEMBER", "CLIENT"],
       default: "CLIENT"
     },
-    raiting: Number /*,
-    documents: [String]*/
+    raiting: Number
+    /*payment: {
+      card: {
+        type: String,
+        enum: ["DEBITO", "CREDITO"],
+        required: true
+      },
+      number: {
+        type: Number,
+        required: true
+      },
+      expires: {
+        type: Number,
+        required: true
+      },
+      cvv: {
+        type: Number,
+        required: true
+      }
+    },*/
+    /*documents: [String]*/
   },
   {
     timestamps: {

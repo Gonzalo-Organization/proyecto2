@@ -11,7 +11,7 @@ router.get("/login", (req, res) => {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/client",
     failureRedirect: "/client/login"
   })
 );
@@ -34,8 +34,8 @@ router.post("/register", (req, res) => {
         message: "O confirmas o cuello"
       };
       //mail.send(options);
-      //res.redirect("/auth/login");
-      res.send(user);
+      res.redirect("/client/login");
+      //res.send(user);
     })
     .catch(err => {
       res
