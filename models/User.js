@@ -29,7 +29,7 @@ const userSchema = new Schema(
     services: [String],
     role: {
       type: String,
-      enum: ["ADMIN", "MEMBER", "CLIENT"],
+      enum: ["MEMBER", "CLIENT", "BOTH"],
       default: "CLIENT"
     },
     raiting: Number

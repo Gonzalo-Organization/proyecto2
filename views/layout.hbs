@@ -6,21 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+    crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/stylesheets/semantic.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
 <body>
   <div class="ui fixed borderless large menu">
-    <a class="item" href="/">Home </a>
-    <a class="item" href="/member/login">Miembros</a>
-    <a class="item" href="/client/login">Clientes</a>
+    <a class="item" href="/">Home</a>
+    <!--<a class="item" href="/member/login">Miembros</a>
+    <a class="item" href="/client/login">Clientes</a>-->
     <div class="right menu">
       <div class="item">
         {{#if user}}
-        <a class="ui red button" href="/logout">Salir</a>
+        <form action="/logout" method="POST">
+          <button type="submit" class="ui red button">Salir</button>
+        </form>
         {{else}}
-        <div class="ui primary button">Ingresar</div>
+        <!--<div class="ui primary button" id="login">Ingresar</div>-->
+        <div class="ui buttons">
+          <button class="ui green button" id="login">Ingresar</button>
+          <div class="or" data-text="O"></div>
+          <button class="ui blue button" id="register">Registrarse</button>
+        </div>
         {{/if}}
       </div>
     </div>
@@ -28,6 +37,14 @@
 
   <div class="ui basic segment">
     {{{body}}}
+  </div>
+
+  <div class="ui mini modal login">
+    {{> login}}
+  </div>
+
+  <div class="ui mini modal register">
+    {{> register}}
   </div>
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="

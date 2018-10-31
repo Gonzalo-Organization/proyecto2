@@ -64,16 +64,18 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
+hbs.registerPartials(__dirname + "/views/partials");
+
 // default value for title local
 app.locals.title = "Express - Generated with IronGenerator";
 
 const index = require("./routes/index");
-const member_auth = require("./routes/member_auth");
-const client_auth = require("./routes/client_auth");
-const member = require("./routes/member");
 app.use("/", index);
-app.use("/member", member_auth);
-app.use("/client", client_auth);
+
+const auth = require("./routes/auth");
+app.use("/", auth);
+
+const member = require("./routes/member");
 app.use("/member", member);
 
 module.exports = app;

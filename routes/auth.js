@@ -4,25 +4,29 @@ const passport = require("passport");
 const User = require("../models/User");
 //const mail = require("../helpers/mailer");
 
+/*
 router.get("/login", (req, res) => {
   res.render("login", {
     member: true
   });
 });
+*/
 
 router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/member",
-    failureRedirect: "/member/login"
+    failureRedirect: "/login"
   })
 );
 
+/*
 router.get("/register", (req, res) => {
   res.render("register", {
     member: true
   });
 });
+*/
 
 router.post("/register", (req, res) => {
   if (req.body.password !== req.body["password-confirm"])

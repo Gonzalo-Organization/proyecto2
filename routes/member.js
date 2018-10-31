@@ -1,18 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const validations = require("../helpers/validations");
 
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) return next();
-  res.redirect("/member/login");
-}
-
-router.get("/", isLoggedIn, (req, res) => {
+router.get("/", validations.isLoggedIn, (req, res) => {
   res.render("home", {
     user: req.user
   });
 });
 
-router.get("/profile", isLoggedIn, (req, res) => {
+router.get("/profile", validations.isLoggedIn, (req, res) => {
   res.render("profile", {
     user: req.user
   });
