@@ -19,7 +19,8 @@ const userSchema = new Schema(
     },
     gender: {
       type: String,
-      required: "Campo de genero es obligatorio"
+      enum: ["MALE", "FEMALE"]
+      //required: "Campo de genero es obligatorio"
     },
     active: {
       type: Boolean,
@@ -64,4 +65,4 @@ const userSchema = new Schema(
 
 userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
 
-module.exports = mongoose.model("Member", userSchema);
+module.exports = mongoose.model("User", userSchema);

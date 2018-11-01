@@ -16,7 +16,7 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/member",
-    failureRedirect: "/login"
+    failureRedirect: "/"
   })
 );
 
@@ -30,9 +30,10 @@ router.get("/register", (req, res) => {
 
 router.post("/register", (req, res) => {
   if (req.body.password !== req.body["password-confirm"])
-    return res.render("register", { msg: "Las contraseñas no son iguales" });
-  const { name, last_name, email, services, password } = req.body;
-  User.register({ name, last_name, email, services, role: "MEMBER" }, password)
+    return res.render("index", { msg: "Las contraseñas no son iguales" });
+  const { name, last_name, email, password, member } = req.body;
+  if (member === "on") role = "MEMBER";
+  User.register({ name, last_name, email, role }, password)
     .then(user => {
       const options = {
         email: user.email,
@@ -40,13 +41,11 @@ router.post("/register", (req, res) => {
         message: "O confirmas o cuello"
       };
       //mail.send(options);
-      res.redirect("/member/login");
+      res.redirect("/member");
       //res.send(user);
     })
     .catch(err => {
-      res
-        .status(500)
-        .render("register", { err, msg: "No pudimos registrarte" });
+      res.status(500).render("index", { err, msg: "No pudimos registrarte" });
     });
 });
 

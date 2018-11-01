@@ -1,55 +1,47 @@
-<form action="/{{#if member}}member{{else}}client{{/if}}/register" method="POST">
-  <div>
-    <label for="">
-      Name:
-      <input type="text" name="name">
-    </label>
-  </div>
+<form action="/register" method="POST" class="ui large form">
+  <div class="ui stacked segment">
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        <input type="text" name="name" placeholder="Nombre">
+      </div>
+    </div>
 
-  <div>
-    <label for="">
-      Last Name:
-      <input type="text" name="last_name">
-    </label>
-  </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        <input type="text" name="last_name" placeholder="Apellido">
+      </div>
+    </div>
 
-  <div>
-    <label for="">
-      Email:
-      <input type="email" name="email">
-    </label>
-  </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        <input type="email" name="email" placeholder="Email">
+      </div>
+    </div>
 
-  <div>
-    <label for="">
-      Password:
-      <input type="password" name="password">
-    </label>
-  </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        <input type="password" name="password" placeholder="Password">
+      </div>
+    </div>
 
-  <div>
-    <label for="">
-      Confirm Password:
-      <input type="password" name="password-confirm">
-    </label>
-  </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        <input type="password" name="password-confirm" placeholder="Confirmar password">
+      </div>
+    </div>
 
-  {{#if member}}
-  <div>
-    <label for="">
-      Tipo de servicios:
-      <select name="services" multiple>
-        <option value="electricista">Electricista</option>
-        <option value="carpintero">Carpintero</option>
-        <option value="plomero">Plomero</option>
-        <option value="albañil">Albañil</option>
-        <option value="mecanico">Mecanico</option>
-        <option value="cerrajero">Cerrajero</option>
-        <option value="chofer">Chofer</option>
-      </select>
-    </label>
-  </div>
-  {{/if}}
+    <div class="field">
+      <div class="ui toggle checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" name="member">
+        <label>Miembro</label>
+      </div>
+    </div>
 
-  <button type="submit">Registro</button>
+    <button type="submit" class="ui fluid large teal submit button">Registro</button>
+  </div>
 </form>

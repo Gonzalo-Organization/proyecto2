@@ -4,7 +4,6 @@ const validations = require("../helpers/validations");
 
 /* GET home page */
 router.get("/", (req, res) => {
-  console.log(req.isAuthenticated());
   let user = req.isAuthenticated();
 
   res.render("index", {
@@ -13,6 +12,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
+  res.redirect("/");
+});
+
+router.get("/register", (req, res) => {
   res.redirect("/");
 });
 

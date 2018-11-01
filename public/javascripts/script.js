@@ -32,3 +32,6 @@ $(function() {
     closable: true
   });
 });
+
+/*Checkbox*/
+$(".ui.checkbox").checkbox();
