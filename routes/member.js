@@ -15,4 +15,8 @@ router.get("/profile", validations.isLoggedIn, (req, res) => {
   //res.send("<h1>Bienvenido</h1>");
 });
 
+router.post("/update", validations.isLoggedIn, (req, res) => {
+  res.send(req.body);
+});
+
 module.exports = router;

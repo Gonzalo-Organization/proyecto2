@@ -1,0 +1,76 @@
+<div>
+  {{user}}
+</div>
+
+<div class="ui segment">
+  <form class="ui form" action="/member/update" method="POST">
+    <h4 class="ui dividing header">Perfil</h4>
+    <div class="field">
+      <div class="two fields">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="mame" value="{{user.name}}" placeholder="First Name">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="last_name" value="{{user.last_name}}" placeholder="Last Name">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui selection dropdown">
+        <input type="hidden" name="gender">
+        <i class="dropdown icon"></i>
+        <div class="default text">Genero</div>
+        <div class="menu">
+          <div class="item" data-value="MALE">Masculino</div>
+          <div class="item" data-value="FEMALE">Femenino</div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        <input type="text" name="email" value="{{user.email}}" placeholder="Email">
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        <input type="text" name="address" value="{{user.address}}" placeholder="Address">
+      </div>
+    </div>
+    <div class="field">
+      <select name="services" class="ui selection dropdown" multiple="" id="multi-select">
+        <option value="">Selecciona un Oficio</option>
+        <option value="electricista">Electricista</option>
+        <option value="carpintero">Carpintero</option>
+        <option value="plomero">Plomero</option>
+        <option value="albañil">Albañil</option>
+        <option value="mecanico">Mecanico</option>
+        <option value="cerrajero">Cerrajero</option>
+        <option value="chofer">Chofer</option>
+      </select>
+    </div>
+    <button type="submit" class="ui fluid teal submit button">Guardar</button>
+  </form>
+</div>
+
+<!--
+<div class="field">
+  <div class="ui left icon input">
+    <i class="user icon"></i>
+    <input type="password" name="password" placeholder="Nuevo Password">
+  </div>
+</div>
+<div class="field">
+  <div class="ui left icon input">
+    <i class="user icon"></i>
+    <input type="password" name="password-confirm" placeholder="Confirmar nuevo password">
+  </div>
+</div>
+-->

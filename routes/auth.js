@@ -31,9 +31,10 @@ router.get("/register", (req, res) => {
 router.post("/register", (req, res) => {
   if (req.body.password !== req.body["password-confirm"])
     return res.render("index", { msg: "Las contraseñas no son iguales" });
-  const { name, last_name, email, password, member } = req.body;
+  const { name, last_name, email, gender, password, member } = req.body;
+  let role;
   if (member === "on") role = "MEMBER";
-  User.register({ name, last_name, email, role }, password)
+  User.register({ name, last_name, email, gender, role }, password)
     .then(user => {
       const options = {
         email: user.email,
@@ -53,5 +54,9 @@ router.post("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
+
+/*router.get('/verificar/:id', (req, res) => {
+
+})*/
 
 module.exports = router;

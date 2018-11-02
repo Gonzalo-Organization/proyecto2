@@ -33,5 +33,14 @@ $(function() {
   });
 });
 
+/*Select*/
+$(".selection.dropdown").dropdown();
+
 /*Checkbox*/
 $(".ui.checkbox").checkbox();
+
+/*Tabs*/
+$(".menu .item").tab();
+
+/*Select*/
+$("#multi-select").dropdown();

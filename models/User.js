@@ -22,18 +22,19 @@ const userSchema = new Schema(
       enum: ["MALE", "FEMALE"]
       //required: "Campo de genero es obligatorio"
     },
-    active: {
-      type: Boolean,
-      default: false
-    },
+    address: String,
     profile_pic: String,
     services: [String],
+    raiting: Number,
     role: {
       type: String,
       enum: ["MEMBER", "CLIENT", "BOTH"],
       default: "CLIENT"
     },
-    raiting: Number
+    active: {
+      type: Boolean,
+      default: false
+    }
     /*payment: {
       card: {
         type: String,
