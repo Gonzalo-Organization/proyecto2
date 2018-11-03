@@ -10,7 +10,7 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="mame" value="{{user.name}}" placeholder="First Name">
+            <input type="text" name="name" value="{{user.name}}" placeholder="First Name">
           </div>
         </div>
         <div class="field">
@@ -20,6 +20,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="field">
+      <textarea rows="4" name="description" placeholder="Escribe un poco de lo haz echo">{{user.description}}</textarea>
     </div>
     <div class="field">
       <div class="ui selection dropdown">

@@ -12,13 +12,13 @@ router.get("/login", (req, res) => {
 });
 */
 
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/member",
-    failureRedirect: "/"
-  })
-);
+router.post("/login", passport.authenticate("local"), (req, res) => {
+  if (req.user.role === "CLIENT") {
+    res.redirect("/client/search");
+  } else {
+    res.redirect("/member/search");
+  }
+});
 
 /*
 router.get("/register", (req, res) => {

@@ -9,20 +9,6 @@ router.get("/", validations.isLoggedIn, (req, res) => {
   });
 });
 
-router.get("/search", validations.isLoggedIn, (req, res) => {
-  User.find({ role: "CLIENT" })
-    .then(users => {
-      res.render("search", {
-        user: req.user,
-        users
-      });
-      //res.send(users);
-    })
-    .catch(err => {
-      throw new Error(err);
-    });
-});
-
 router.post("/update", validations.isLoggedIn, (req, res) => {
   let id = req.user._id;
   let user = req.body;

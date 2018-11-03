@@ -1,0 +1,38 @@
+<div class="ui seven column grid">
+  <div class="row">
+    <div class="column">
+      <button class="ui blue button">Electricista</button>
+    </div>
+    <div class="column">
+      <button class="ui blue button">Carpintero</button>
+    </div>
+    <div class="column">
+      <button class="ui blue button">Plomero</button>
+    </div>
+    <div class="column">
+      <button class="ui blue button">Albañil</button>
+    </div>
+    <div class="column">
+      <button class="ui blue button">Mecanico</button>
+    </div>
+    <div class="column">
+      <button class="ui blue button">Cerrajero</button>
+    </div>
+    <div class="column">
+      <button class="ui blue button">Chofer</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="ui four cards">
+  {{#each users}}
+  {{> memberCard this}}
+  {{/each}}
+</div>
+
+<ul>
+  {{#each users}}
+  <li>{{this}}</li>
+  {{/each}}
+</ul>

@@ -24,6 +24,7 @@ const userSchema = new Schema(
     },
     address: String,
     profile_pic: String,
+    description: String,
     services: [String],
     raiting: Number,
     role: {

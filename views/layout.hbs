@@ -13,27 +13,7 @@
 </head>
 
 <body>
-  <div class="ui fixed borderless large menu">
-    <a class="item" href="/">Home</a>
-    <!--<a class="item" href="/member/login">Miembros</a>
-    <a class="item" href="/client/login">Clientes</a>-->
-    <div class="right menu">
-      <div class="item">
-        {{#if user}}
-        <form action="/logout" method="POST">
-          <button type="submit" class="ui red button">Salir</button>
-        </form>
-        {{else}}
-        <!--<div class="ui primary button" id="login">Ingresar</div>-->
-        <div class="ui buttons">
-          <button class="ui green button" id="login">Ingresar</button>
-          <div class="or" data-text="O"></div>
-          <button class="ui blue button" id="register">Registrarse</button>
-        </div>
-        {{/if}}
-      </div>
-    </div>
-  </div>
+  {{> navbar}}
 
   <div class="ui basic segment">
     {{{body}}}
