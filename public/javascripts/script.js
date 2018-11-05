@@ -33,6 +33,20 @@ $(function() {
   });
 });
 
+$(function() {
+  $("#problem").click(function() {
+    $(".problem")
+      .modal({
+        blurring: true
+      })
+      .modal("setting", "closable", false)
+      .modal("show");
+  });
+  $(".problem").modal({
+    closable: true
+  });
+});
+
 /*Select*/
 $(".selection.dropdown").dropdown();
 

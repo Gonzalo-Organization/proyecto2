@@ -1,0 +1,36 @@
+<div>
+  {{#if member}}
+  <h1>Necesita tu ayuda</h1>
+  {{/if}}
+  {{#if client}}
+  <h1>¿Estas teniendo problemas?</h1>
+  <p>Deja tu problema y alguien te puede ayudar</p>
+
+  <button class="circular ui icon big green button" id="problem">
+    <i class="plus icon"></i>
+  </button>
+  {{/if}}
+
+  <div class="ui basic segment">
+    <div class="ui four cards">
+      {{#each problems as |problem|}}
+      {{> problemCard problem}}
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="ui tiny modal problem">
+    {{> problemForm}}
+  </div>
+</div>
+
+
+<script>
+  window.onload = function () {
+    addEventListener("click", (e) => {
+      if (!e.target.dataset.id) return;
+      console.log("elemento que borre", e.target.dataset.id);
+      axios.delete(`http://${window.location.host}/problem/${e.target.dataset.id}`);
+    })
+  }
+</script>

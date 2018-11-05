@@ -2,28 +2,28 @@ const express = require("express");
 const router = express.Router();
 const validations = require("../helpers/validations");
 const User = require("../models/User");
+const Problem = require("../models/Problem");
 
-router.get("/", validations.isLoggedIn, (req, res) => {
+router.get("/", validations.isMemberLoggedIn, (req, res) => {
   res.render("home", {
+    member: true,
     user: req.user
   });
 });
 
-router.get("/search", validations.isLoggedIn, (req, res) => {
-  User.find({ role: "CLIENT" })
-    .then(users => {
-      res.render("search", {
+router.get("/problem", validations.isMemberLoggedIn, (req, res) => {
+  Problem.find()
+    .populate("author", "role profile_pic name last_name")
+    .then(problems => {
+      res.render("problemList", {
+        member: true,
         user: req.user,
-        users
+        problems
       });
-      //res.send(users);
-    })
-    .catch(err => {
-      throw new Error(err);
     });
 });
 
-router.post("/update", validations.isLoggedIn, (req, res) => {
+router.post("/update", validations.isMemberLoggedIn, (req, res) => {
   let id = req.user._id;
   let user = req.body;
   User.findByIdAndUpdate(id, { $set: user })

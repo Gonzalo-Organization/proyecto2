@@ -1,0 +1,44 @@
+<form action="/problem" method="POST" class="ui large form" enctype="multipart/form-data">
+  <div class="ui stacked segment">
+
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        <input type="text" name="title" placeholder="Titulo" value="{{user.title}}">
+      </div>
+    </div>
+
+    <div class="field">
+      <textarea rows="4" name="description" placeholder="Escribe tu problema">{{user.description}}</textarea>
+    </div>
+
+    <div class="field">
+      <div class="ui right labeled input">
+        <label for="presupuesto" class="ui label">$</label>
+        <input type="text" name="maxBudget" placeholder="Presupuesto" id="presupuesto" value="{{user.maxBudget}}">
+      </div>
+    </div>
+
+    <div class="field">
+      <input type="file" name="images" class="inputfile" id="imagesFileInput" multiple />
+      <label for="imagesFileInput" class="ui medium center button">
+        <i class="ui upload icon"></i>
+        Subir imagenes
+      </label>
+    </div>
+
+    <button type="submit" class="ui fluid large teal submit button">Enviar</button>
+  </div>
+
+</form>
+
+<style>
+  .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+</style>

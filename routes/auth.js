@@ -16,7 +16,7 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
   if (req.user.role === "CLIENT") {
     res.redirect("/client/search");
   } else {
-    res.redirect("/member/search");
+    res.redirect("/member/problem");
   }
 });
 
@@ -33,8 +33,16 @@ router.post("/register", (req, res) => {
     return res.render("index", { msg: "Las contraseñas no son iguales" });
   const { name, last_name, email, gender, password, member } = req.body;
   let role;
+  let profile_pic;
   if (member === "on") role = "MEMBER";
-  User.register({ name, last_name, email, gender, role }, password)
+  if (gender === "MALE") {
+    profile_pic =
+      "https://res.cloudinary.com/royquiroz/image/upload/v1541363947/Tfixeo/male.png";
+  } else {
+    profile_pic =
+      "https://res.cloudinary.com/royquiroz/image/upload/v1541363947/Tfixeo/female.png";
+  }
+  User.register({ name, last_name, email, gender, role, profile_pic }, password)
     .then(user => {
       const options = {
         email: user.email,

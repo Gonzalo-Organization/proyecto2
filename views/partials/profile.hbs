@@ -1,9 +1,9 @@
-<div>
+<!--<div>
   {{user}}
-</div>
+</div>-->
 
 <div class="ui segment">
-  <form class="ui form" action="/member/update" method="POST">
+  <form class="ui form" action="/{{#if member}}member{{else}}client{{/if}}/update" method="POST">
     <h4 class="ui dividing header">Perfil</h4>
     <div class="field">
       <div class="two fields">
@@ -21,9 +21,11 @@
         </div>
       </div>
     </div>
+    {{#if member}}
     <div class="field">
       <textarea rows="4" name="description" placeholder="Escribe un poco de lo haz echo">{{user.description}}</textarea>
     </div>
+    {{/if}}
     <div class="field">
       <div class="ui selection dropdown">
         <input type="hidden" name="gender">
@@ -44,9 +46,10 @@
     <div class="field">
       <div class="ui left icon input">
         <i class="user icon"></i>
-        <input type="text" name="address" value="{{user.address}}" placeholder="Address">
+        <input type="text" name="address" value="{{user.address}}" placeholder="Direccion">
       </div>
     </div>
+    {{#if member}}
     <div class="field">
       <select name="services" class="ui selection dropdown" multiple="" id="multi-select">
         <option value="">Selecciona un Oficio</option>
@@ -59,6 +62,7 @@
         <option value="chofer">Chofer</option>
       </select>
     </div>
+    {{/if}}
     <button type="submit" class="ui fluid teal submit button">Guardar</button>
   </form>
 </div>

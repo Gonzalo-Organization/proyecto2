@@ -78,4 +78,13 @@ app.use("/", auth);
 const member = require("./routes/member");
 app.use("/member", member);
 
+const client = require("./routes/client");
+app.use("/client", client);
+
+const problem = require("./routes/problem");
+app.use("/problem", problem);
+
+const quote = require("./routes/quotes");
+app.use("/quote", quote);
+
 module.exports = app;
