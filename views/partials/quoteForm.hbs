@@ -1,0 +1,20 @@
+<form action="/quote" method="POST" class="ui large form">
+  <div class="ui stacked segment">
+
+    <input type="text" name="problem" value="{{problem._id}}" hidden>
+
+    <div class="field">
+      <textarea rows="4" name="comment" placeholder="Deja un comentario"></textarea>
+    </div>
+
+    <div class="field">
+      <div class="ui right labeled input">
+        <label for="precio" class="ui label">$</label>
+        <input type="text" name="price" placeholder="Precio" id="precio">
+      </div>
+    </div>
+
+    <button type="submit" class="ui fluid large teal submit button">Enviar</button>
+  </div>
+
+</form>

@@ -35,4 +35,23 @@ router.post("/update", validations.isMemberLoggedIn, (req, res) => {
     });
 });
 
+router.get("/quote/:id", validations.isMemberLoggedIn, (req, res) => {
+  Problem.findById(req.params.id)
+    .populate("author", "role profile_pic name last_name")
+    .populate({
+      path: "quotes",
+      // Get friends of friends - populate the 'friends' array for every friend
+      populate: { path: "user_create" }
+    })
+    .then(problem => {
+      console.log(problem);
+
+      res.render("quote", {
+        member: true,
+        user: req.user,
+        problem
+      });
+    });
+});
+
 module.exports = router;

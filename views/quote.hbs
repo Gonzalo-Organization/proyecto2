@@ -1,0 +1,32 @@
+<div class="ui basic segment">
+  <img class="ui medium left floated rounded image" src="{{problem.author.profile_pic}}">
+
+  <div class="ui medium right floated rotate reveal image">
+    {{#each problem.images as |image|}}
+    <img src="{{image}}" class="visible content">
+    {{/each}}
+  </div>
+
+  <p><strong>{{problem.author.name}} {{problem.author.last_name}}</strong></p>
+  <p>{{problem.description}}</p>
+  <p>Presupuesto: <strong>$ {{problem.maxBudget}}</strong></p>
+  <p class="ui grey">{{problem.updated_at}}</p>
+  {{#if member}} <button class="ui blue button" id="quote">Ofertar</button> {{/if}}
+
+  <div class="ui tiny modal quote">
+    {{> quoteForm}}
+  </div>
+
+  <div class="ui list">
+    {{#each quotes as |quote|}}
+    <div class="item">
+      <img class="ui avatar image" src="/images/avatar2/small/rachel.png">
+      <div class="content">
+        <a class="header">Rachel</a>
+        <div class="description">Last seen watching <a><b>Arrested Development</b></a> just now.</div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+</div>

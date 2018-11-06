@@ -47,6 +47,20 @@ $(function() {
   });
 });
 
+$(function() {
+  $("#quote").click(function() {
+    $(".quote")
+      .modal({
+        blurring: true
+      })
+      .modal("setting", "closable", false)
+      .modal("show");
+  });
+  $(".quote").modal({
+    closable: true
+  });
+});
+
 /*Select*/
 $(".selection.dropdown").dropdown();
 
@@ -58,3 +72,5 @@ $(".menu .item").tab();
 
 /*Select*/
 $("#multi-select").dropdown();
+
+/*Slider*/
