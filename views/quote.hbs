@@ -1,22 +1,41 @@
 <div class="ui basic segment">
-  <img class="ui medium left floated rounded image" src="{{problem.author.profile_pic}}">
 
-  <div class="ui medium right floated rotate reveal image">
-    {{#each problem.images as |image|}}
-    <img src="{{image}}" class="visible content">
-    {{/each}}
+  <div class="ui items">
+    <div class="item">
+      <div class="ui small image">
+        <img src="{{problem.author.profile_pic}}">
+      </div>
+      <div class="content">
+        <div class="header">{{problem.author.name}} {{problem.author.last_name}}</div>
+        <div class="meta">
+          <span class="price">$ {{problem.maxBudget}}</span>
+          <span class="date">{{problem.updated_at}}</span>
+        </div>
+        <div class="description">
+          <p>{{problem.description}}</p>
+          {{#if member}} <button class="ui blue button" id="quote">Ofertar</button> {{/if}}
+        </div>
+      </div>
+
+      <div class="extra">
+        <div class="ui massive right floated horizontal list">
+          <div class="item">
+            {{#each problem.images as |image|}}
+            <img class="ui small image" src="{{image}}">
+            {{/each}}
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <p><strong>{{problem.author.name}} {{problem.author.last_name}}</strong></p>
-  <p>{{problem.description}}</p>
-  <p>Presupuesto: <strong>$ {{problem.maxBudget}}</strong></p>
-  <p class="ui grey">{{problem.updated_at}}</p>
-  {{#if member}} <button class="ui blue button" id="quote">Ofertar</button> {{/if}}
 
   <div class="ui tiny modal quote">
     {{> quoteForm}}
   </div>
 
+  <!--Lista de ofertantes-->
   <div class="ui list">
     {{#each quotes as |quote|}}
     <div class="item">
@@ -28,5 +47,7 @@
     </div>
     {{/each}}
   </div>
+
+  <pre>{{problem}}</pre>
 
 </div>

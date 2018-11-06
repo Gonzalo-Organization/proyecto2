@@ -41,7 +41,7 @@ router.get("/quote/:id", validations.isMemberLoggedIn, (req, res) => {
     .populate({
       path: "quotes",
       // Get friends of friends - populate the 'friends' array for every friend
-      populate: { path: "user_create" }
+      populate: [{ path: "user_create" }]
     })
     .then(problem => {
       console.log(problem);
