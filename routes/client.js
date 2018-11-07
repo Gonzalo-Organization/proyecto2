@@ -65,8 +65,6 @@ router.get("/quote/:id", validations.isClientLoggedIn, (req, res) => {
       populate: { path: "user_create", model: "User" }
     })
     .then(problem => {
-      console.log(problem);
-
       res.render("quote", {
         client: true,
         user: req.user,
@@ -74,5 +72,20 @@ router.get("/quote/:id", validations.isClientLoggedIn, (req, res) => {
       });
     });
 });
+
+/*
+router.get("/quote/member/:id", (req, res) => {
+  req.params.id;
+  Problem.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: { member: req.params.id }
+    },
+    { new: true }
+  ).then(problem => {
+    console.log(problem);
+    res.redirect(`/client/quote/${problem._id}`);
+  });
+});*/
 
 module.exports = router;

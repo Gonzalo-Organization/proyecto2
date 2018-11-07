@@ -9,7 +9,7 @@ const problemSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User"
     },
-    member: {
+    quoteWin: {
       type: Schema.Types.ObjectId,
       ref: "User"
     },
@@ -20,6 +20,10 @@ const problemSchema = new Schema(
       }
     ],
     maxBudget: Number,
+    accepted: {
+      type: Boolean,
+      default: false
+    },
     images: [String]
   },
   {

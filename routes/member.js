@@ -43,8 +43,6 @@ router.get("/quote/:id", validations.isMemberLoggedIn, (req, res) => {
       populate: { path: "user_create", model: "User" }
     })
     .then(problem => {
-      console.log(problem);
-
       res.render("quote", {
         member: true,
         user: req.user,
