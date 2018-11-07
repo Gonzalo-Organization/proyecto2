@@ -3,9 +3,9 @@ const router = express.Router();
 const validations = require("../helpers/validations");
 const User = require("../models/User");
 
-router.get("/", validations.isLoggedIn, (req, res) => {
-  res.render("home", {
-    user: req.user
+router.get("/message/:id", validations.isLoggedIn, (req, res) => {
+  User.findById(req.params.id).then(user => {
+    res.send(user);
   });
 });
 

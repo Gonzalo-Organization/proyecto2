@@ -19,7 +19,6 @@ router.get("/search", validations.isClientLoggedIn, (req, res) => {
         user: req.user,
         users
       });
-      //res.send(users);
     })
     .catch(err => {
       throw new Error(err);
@@ -73,19 +72,10 @@ router.get("/quote/:id", validations.isClientLoggedIn, (req, res) => {
     });
 });
 
-/*
-router.get("/quote/member/:id", (req, res) => {
-  req.params.id;
-  Problem.findByIdAndUpdate(
-    req.params.id,
-    {
-      $set: { member: req.params.id }
-    },
-    { new: true }
-  ).then(problem => {
-    console.log(problem);
-    res.redirect(`/client/quote/${problem._id}`);
+router.get("/message/:id", validations.isClientLoggedIn, (req, res) => {
+  User.findById(req.params.id).then(user => {
+    res.send(user);
   });
-});*/
+});
 
 module.exports = router;

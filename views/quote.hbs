@@ -2,7 +2,7 @@
 
   <div class="ui items">
     <div class="item">
-      <div class="ui small image">
+      <div class="ui small circular image">
         <img src="{{problem.author.profile_pic}}">
       </div>
       <div class="content">
@@ -21,7 +21,7 @@
         <div class="ui massive right floated horizontal list">
           <div class="item">
             {{#each problem.images as |image|}}
-            <img class="ui small image" src="{{image}}">
+            <img class="ui small bordered rounded image" src="{{image}}">
             {{/each}}
           </div>
         </div>

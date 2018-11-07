@@ -11,6 +11,20 @@ router.get("/", validations.isMemberLoggedIn, (req, res) => {
   });
 });
 
+/*router.get("/search", validations.isMemberLoggedIn, (req, res) => {
+  User.find({ $or: [{ role: "M" }, { role: "BOTH" }] })
+    .then(users => {
+      res.render("search", {
+        member: true,
+        user: req.user,
+        users
+      });
+    })
+    .catch(err => {
+      throw new Error(err);
+    });
+});*/
+
 router.get("/problem", validations.isMemberLoggedIn, (req, res) => {
   Problem.find()
     .populate("author", "role profile_pic name last_name")

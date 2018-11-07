@@ -13,17 +13,17 @@
 </div>
 -->
 
-<a class="ui card" href="/profile/{{_id}}">
+<div class="ui card">
   <div class="content">
+    <img class="right floated mini ui circular image" src="{{profile_pic}}">
     <div class="header">{{name}} {{last_name}}</div>
-    <div class="meta">
-      <span class="category">{{category}}</span>
-    </div>
-    <div class="description">
-      <p>{{description}}</p>
-    </div>
+    <div class="meta">{{#each services as |service|}} {{service}} {{/each}}</div>
+    <div class="description">{{description}}</div>
   </div>
   <div class="extra content">
-    <div class="right floated author"><img class="ui avatar image" src="/images/male.png"></div>
+    <div class="ui two buttons">
+      <div class="ui basic green button">Perfil</div>
+      <a class="ui basic red button" href="/client/message/{{_id}}">Mensaje</a>
+    </div>
   </div>
-</a>
+</div>
