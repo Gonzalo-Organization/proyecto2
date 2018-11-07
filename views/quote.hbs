@@ -37,17 +37,19 @@
 
   <!--Lista de ofertantes-->
   <div class="ui list">
-    {{#each quotes as |quote|}}
+    {{#each problem.quotes as |quote|}}
     <div class="item">
-      <img class="ui avatar image" src="/images/avatar2/small/rachel.png">
+      <img class="ui avatar image" src="{{quote.user_create.profile_pic}}">
       <div class="content">
-        <a class="header">Rachel</a>
-        <div class="description">Last seen watching <a><b>Arrested Development</b></a> just now.</div>
+        <a class="header">{{quote.user_create.name}} {{quote.user_create.last_name}}</a>
+        <div class="description">
+          <p>{{quote.comment}} Costo: <strong>$ {{quote.price}}</strong></p>
+        </div>
       </div>
     </div>
     {{/each}}
   </div>
 
-  <pre>{{problem}}</pre>
+  <!--<pre>{{problem}}</pre>-->
 
 </div>

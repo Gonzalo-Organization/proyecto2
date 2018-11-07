@@ -40,8 +40,7 @@ router.get("/quote/:id", validations.isMemberLoggedIn, (req, res) => {
     .populate("author", "role profile_pic name last_name")
     .populate({
       path: "quotes",
-      // Get friends of friends - populate the 'friends' array for every friend
-      populate: [{ path: "user_create" }]
+      populate: { path: "user_create", model: "User" }
     })
     .then(problem => {
       console.log(problem);
