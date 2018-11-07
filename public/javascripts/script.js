@@ -74,3 +74,7 @@ $(".menu .item").tab();
 $("#multi-select").dropdown();
 
 /*Slider*/
+
+function mostrarData(data) {
+  console.log(data);
+}

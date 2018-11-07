@@ -57,8 +57,22 @@ router.get("/problem", validations.isClientLoggedIn, (req, res) => {
     });
 });
 
-router.get("/problem/:id", (req, res) => {
-  res.send(req.params.id);
+router.get("/quote/:id", validations.isClientLoggedIn, (req, res) => {
+  Problem.findById(req.params.id)
+    .populate("author", "role profile_pic name last_name")
+    .populate({
+      path: "quotes",
+      populate: { path: "user_create", model: "User" }
+    })
+    .then(problem => {
+      console.log(problem);
+
+      res.render("quote", {
+        client: true,
+        user: req.user,
+        problem
+      });
+    });
 });
 
 module.exports = router;

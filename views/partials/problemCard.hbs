@@ -1,5 +1,5 @@
 <div class="ui card">
-  <a class="content" href="/{{#if client}}client/problem/{{_id}}{{else}}member/quote/{{_id}}{{/if}}">
+  <a class="content" href="/{{#if client}}client/quote/{{_id}}{{else}}member/quote/{{_id}}{{/if}}">
     <div class="header">{{title}}</div>
     <div class="meta">
       <span class="date">{{update_at}}</span>
@@ -13,7 +13,7 @@
     {{#if client}}
     <div class="left floated button">
       <div class="ui icon buttons">
-        <button class="ui green button">
+        <button class="ui green button" id="edit" onclick="mostrarData({{_id}})">
           <i class="edit icon"></i>
         </button>
         <button class="ui red button" data-id="{{this._id}}">
