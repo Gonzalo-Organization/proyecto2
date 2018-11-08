@@ -11,6 +11,7 @@ const messageSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User"
     },
+    title: String,
     comment: String,
     answers: [String],
     images: [String]

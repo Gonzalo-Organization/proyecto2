@@ -13,6 +13,7 @@ $(function() {
       .modal({
         blurring: true
       })
+      .modal("setting", "closable", false)
       .modal("show");
   });
   $(".login").modal({
@@ -26,6 +27,7 @@ $(function() {
       .modal({
         blurring: true
       })
+      .modal("setting", "closable", false)
       .modal("show");
   });
   $(".register").modal({
@@ -63,6 +65,12 @@ $(function() {
 
 $(function() {
   $(".message").click(function() {
+    const data = $(this)
+      .first()
+      .data("memberid");
+    $("#member").val(data);
+
+    console.log($("#member").val());
     $("#message")
       .modal({
         blurring: true

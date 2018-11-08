@@ -29,12 +29,13 @@
 
 <div class="ui basic segment">
   <div class="ui four cards">
-    {{#each users}}
-    {{> memberCard this}}
+    {{#each users as |user|}}
+    {{> memberCard user}}
     {{/each}}
   </div>
 </div>
 
 <div class="ui tiny modal" id="message">
-  {{> quoteForm}}
+  <i class="close icon"></i>
+  {{> messageForm}}
 </div>

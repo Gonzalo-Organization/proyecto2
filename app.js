@@ -89,4 +89,7 @@ app.use("/problem", problem);
 const quote = require("./routes/quotes");
 app.use("/quote", quote);
 
+const message = require("./routes/messages");
+app.use("/message", message);
+
 module.exports = app;

@@ -3,6 +3,7 @@ const router = express.Router();
 const validations = require("../helpers/validations");
 const User = require("../models/User");
 const Problem = require("../models/Problem");
+const Message = require("../models/Message");
 
 router.get("/", validations.isClientLoggedIn, (req, res) => {
   res.render("home", {
@@ -79,6 +80,14 @@ router.get("/message/:id", validations.isClientLoggedIn, (req, res) => {
       user: req.user,
       user
     });
+  });
+});
+
+router.post("/message", validations.isClientLoggedIn, (req, res) => {
+  console.log(req.body);
+
+  Message.create(req.body).then(message => {
+    res.redirect("/");
   });
 });
 

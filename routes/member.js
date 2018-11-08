@@ -3,6 +3,7 @@ const router = express.Router();
 const validations = require("../helpers/validations");
 const User = require("../models/User");
 const Problem = require("../models/Problem");
+const Message = require("../models/Message");
 
 router.get("/", validations.isMemberLoggedIn, (req, res) => {
   res.render("home", {

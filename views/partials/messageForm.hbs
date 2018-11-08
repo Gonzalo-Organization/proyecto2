@@ -1,0 +1,25 @@
+<form action="/message/" method="POST" class="ui large form">
+  <div class="ui stacked segment">
+    <input type="text" name="addressee" id="member" value="" hidden>
+    <input type="text" name="sender" value="{{user._id}}" hidden>
+
+    <div class="field">
+      <input type="text" name="title" placeholder="Titulo">
+    </div>
+
+    <div class="field">
+      <textarea rows="4" name="comment" placeholder="Deja un comentario"></textarea>
+    </div>
+
+    <div class="field">
+      <input type="file" name="images" class="inputfile" id="imagesFileInput" multiple />
+      <label for="imagesFileInput" class="ui medium center button">
+        <i class="ui upload icon"></i>
+        Subir imagenes
+      </label>
+    </div>
+
+    <button type="submit" class="ui fluid large teal submit button">Enviar</button>
+  </div>
+
+</form>
