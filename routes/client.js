@@ -74,7 +74,11 @@ router.get("/quote/:id", validations.isClientLoggedIn, (req, res) => {
 
 router.get("/message/:id", validations.isClientLoggedIn, (req, res) => {
   User.findById(req.params.id).then(user => {
-    res.send(user);
+    res.render("message", {
+      client: true,
+      user: req.user,
+      user
+    });
   });
 });
 

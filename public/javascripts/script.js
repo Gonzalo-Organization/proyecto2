@@ -61,6 +61,20 @@ $(function() {
   });
 });
 
+$(function() {
+  $(".message").click(function() {
+    $("#message")
+      .modal({
+        blurring: true
+      })
+      .modal("setting", "closable", false)
+      .modal("show");
+  });
+  $("#message").modal({
+    closable: true
+  });
+});
+
 /*Select*/
 $(".selection.dropdown").dropdown();
 
