@@ -7,6 +7,9 @@ const transport = mailer.createTransport({
   auth: {
     user: process.env.SEND_USER,
     pass: process.env.SEND_PASS
+  },
+  tls: {
+    rejectUnauthorized: false
   }
 });
 

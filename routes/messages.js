@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-//const validations = require("../helpers/validations");
 const User = require("../models/User");
 const Message = require("../models/Message");
 const mail = require("../helpers/mailer");
+const upload = require("../helpers/multer");
 
-router.post("/", (req, res) => {
+router.post("/", upload.array("images"), (req, res) => {
   const sender_id = req.body.sender;
   const received_id = req.body.addressee;
 
@@ -25,7 +25,8 @@ router.post("/", (req, res) => {
             id: receiver._id,
             name: `${receiver.name} ${receiver.last_name}`,
             email: receiver.email,
-            filename: "message"
+            filename: "message",
+            data: message
           };
           mail.send(options);
           res.redirect("/");
@@ -35,6 +36,10 @@ router.post("/", (req, res) => {
         throw new Error(e);
       });
   });
+});
+
+router.get("/plantilla", (req, res) => {
+  res.render("mail/message");
 });
 
 module.exports = router;
