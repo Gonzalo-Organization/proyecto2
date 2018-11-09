@@ -1,28 +1,30 @@
 <div class="ui basic segment">
 
-  <div class="ui vertical pointing menu">
-    <a class="item" data-tab="enviados">Enviados</a>
-    <a class="item" data-tab="recibidos">Recibidos</a>
+  <div class="ui pointing menu">
+    <a class="item" data-tab="enviados">Enviados <div class="ui label">{{user.sent.length}}</div></a>
+    <a class="item" data-tab="recibidos">Recibidos <div class="ui label">{{user.received.length}}</div></a>
   </div>
 
   <div class="ui bottom attached tab" data-tab="enviados">
 
     {{#each user.sent as |send|}}
-    <div class="ui items">
-      <div class="item">
-        <div class="ui small circular image">
-          <img src="{{send.addressee.profile_pic}}">
-        </div>
-        <div class="content">
-          <div class="header">{{send.addressee.name}} {{send.addressee.last_name}}</div>
-          <div class="meta">
-            <p class="date">{{send.addressee.created_at}}</p>
-            <p class="telephone">{{send.addressee.telephone}}</p>
-            <p class="address">{{send.addressee.address}}</p>
-          </div>
-          <div class="description">
-            <h1>{{send.title}}</h1>
-            <p>{{send.comment}}</p>
+    <div class="ui basic segment">
+      <div class="ui floating message">
+        <div class="ui items">
+          <div class="item">
+            <div class="ui tiny circular image">
+              <img src="{{send.addressee.profile_pic}}">
+            </div>
+            <div class="content">
+              <div class="header">{{send.addressee.name}} {{send.addressee.last_name}}</div>
+              <div class="meta">
+                <p class="date">{{send.addressee.created_at}}</p>
+              </div>
+              <div class="description">
+                <h5>{{send.title}}</h5>
+                <p>{{send.comment}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -46,7 +48,7 @@
             <p class="address">{{receives.sender.address}}</p>
           </div>
           <div class="description">
-            <h1>{{receives.title}}</h1>
+            <h3>{{receives.title}}</h3>
             <p>{{receives.comment}}</p>
           </div>
         </div>

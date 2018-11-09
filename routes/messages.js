@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const validations = require("../helpers/validations");
+//const validations = require("../helpers/validations");
 const User = require("../models/User");
 const Message = require("../models/Message");
+const mail = require("../helpers/mailer");
 
 router.post("/", (req, res) => {
   const sender_id = req.body.sender;
@@ -13,9 +14,20 @@ router.post("/", (req, res) => {
       $push: { sent: message._id }
     })
       .then(() => {
-        User.findByIdAndUpdate(received_id, {
-          $push: { received: message._id }
-        }).then(() => {
+        User.findByIdAndUpdate(
+          received_id,
+          {
+            $push: { received: message._id }
+          },
+          { new: true }
+        ).then(receiver => {
+          const options = {
+            id: receiver._id,
+            name: `${receiver.name} ${receiver.last_name}`,
+            email: receiver.email,
+            filename: "message"
+          };
+          mail.send(options);
           res.redirect("/");
         });
       })
@@ -24,25 +36,5 @@ router.post("/", (req, res) => {
       });
   });
 });
-
-/*
-router.get("/message/:id", validations.isLoggedIn, (req, res) => {
-  User.findById(req.params.id).then(user => {
-    res.send(user);
-  });
-});
-
-router.post("/update", validations.isLoggedIn, (req, res) => {
-  let id = req.user._id;
-  let user = req.body;
-  User.findByIdAndUpdate(id, { $set: user })
-    .then(() => {
-      res.redirect("/member");
-    })
-    .catch(err => {
-      throw new Error(err);
-    });
-});
-*/
 
 module.exports = router;

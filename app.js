@@ -10,7 +10,6 @@ const logger = require("morgan");
 const path = require("path");
 const passport = require("./helpers/passport");
 const session = require("express-session");
-const hbsIntl = require("handlebars-intl");
 
 mongoose
   .connect(
@@ -65,7 +64,6 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
-hbsIntl.registerWith(hbs);
 hbs.registerPartials(__dirname + "/views/partials");
 
 // default value for title local

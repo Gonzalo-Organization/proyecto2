@@ -2,15 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const User = require("../models/User");
-//const mail = require("../helpers/mailer");
-
-/*
-router.get("/login", (req, res) => {
-  res.render("login", {
-    member: true
-  });
-});
-*/
+const mail = require("../helpers/mailer");
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
   if (req.user.role === "CLIENT") {
@@ -19,14 +11,6 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
     res.redirect("/member/problem");
   }
 });
-
-/*
-router.get("/register", (req, res) => {
-  res.render("register", {
-    member: true
-  });
-});
-*/
 
 router.post("/register", (req, res) => {
   if (req.body.password !== req.body["password-confirm"])
@@ -44,10 +28,11 @@ router.post("/register", (req, res) => {
   }
   User.register({ name, last_name, email, gender, role, profile_pic }, password)
     .then(user => {
+      options.filename = "verify";
       const options = {
-        email: user.email,
-        subject: "Confirma tu correo",
-        message: "O confirmas o cuello"
+        id: user._id,
+        name: `${user.name} ${user.last_name}`,
+        email: user.email
       };
       //mail.send(options);
       res.redirect("/member");
