@@ -6,10 +6,15 @@ const Problem = require("../models/Problem");
 const Message = require("../models/Message");
 
 router.get("/", validations.isClientLoggedIn, (req, res) => {
-  res.render("home", {
-    client: true,
-    user: req.user
-  });
+  User.findById(req.user._id)
+    .populate({ path: "sent", populate: { path: "addressee" } })
+    .populate({ path: "received", populate: { path: "sender" } })
+    .then(user => {
+      res.render("home", {
+        client: true,
+        user
+      });
+    });
 });
 
 router.get("/search", validations.isClientLoggedIn, (req, res) => {
@@ -83,12 +88,29 @@ router.get("/message/:id", validations.isClientLoggedIn, (req, res) => {
   });
 });
 
+/*
 router.post("/message", validations.isClientLoggedIn, (req, res) => {
   console.log(req.body);
 
   Message.create(req.body).then(message => {
-    res.redirect("/");
+    const sender_id = req.body.sender;
+    const received_id = req.body.addressee;
+
+    User.findByIdAndUpdate(sender_id, {
+      messages: { $push: { sent: message._id } }
+    })
+      .then(() => {
+        User.findByIdAndUpdate(received_id, {
+          messages: { $push: { received: message._id } }
+        }).then(() => {
+          res.redirect("/search");
+        });
+      })
+      .catch(e => {
+        throw new Error(e);
+      });
   });
 });
+*/
 
 module.exports = router;

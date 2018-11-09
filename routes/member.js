@@ -6,10 +6,15 @@ const Problem = require("../models/Problem");
 const Message = require("../models/Message");
 
 router.get("/", validations.isMemberLoggedIn, (req, res) => {
-  res.render("home", {
-    member: true,
-    user: req.user
-  });
+  User.findById(req.user._id)
+    .populate({ path: "sent", populate: { path: "addressee" } })
+    .populate({ path: "received", populate: { path: "sender" } })
+    .then(user => {
+      res.render("home", {
+        member: true,
+        user
+      });
+    });
 });
 
 /*router.get("/search", validations.isMemberLoggedIn, (req, res) => {

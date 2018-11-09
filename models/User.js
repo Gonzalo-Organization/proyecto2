@@ -32,6 +32,18 @@ const userSchema = new Schema(
       enum: ["MEMBER", "CLIENT", "BOTH"],
       default: "CLIENT"
     },
+    received: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Message"
+      }
+    ],
+    sent: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Message"
+      }
+    ],
     active: {
       type: Boolean,
       default: false

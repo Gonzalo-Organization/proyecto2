@@ -1,21 +1,58 @@
 <div class="ui basic segment">
 
-  <div class="ui items">
-    <div class="item">
-      <div class="ui small circular image">
-        <img src="{{user.profile_pic}}">
-      </div>
-      <div class="content">
-        <div class="header">{{user.name}} {{user.last_name}}</div>
-        <div class="meta">
-          <p class="date">{{user.created_at}}</p>
-          <p class="telephone">{{user.telephone}}</p>
-          <p class="address">{{user.address}}</p>
+  <div class="ui vertical pointing menu">
+    <a class="item" data-tab="enviados">Enviados</a>
+    <a class="item" data-tab="recibidos">Recibidos</a>
+  </div>
+
+  <div class="ui bottom attached tab" data-tab="enviados">
+
+    {{#each user.sent as |send|}}
+    <div class="ui items">
+      <div class="item">
+        <div class="ui small circular image">
+          <img src="{{send.addressee.profile_pic}}">
         </div>
-        <div class="description">
-          <button class="ui blue button">Nuevo Mensaje</button>
+        <div class="content">
+          <div class="header">{{send.addressee.name}} {{send.addressee.last_name}}</div>
+          <div class="meta">
+            <p class="date">{{send.addressee.created_at}}</p>
+            <p class="telephone">{{send.addressee.telephone}}</p>
+            <p class="address">{{send.addressee.address}}</p>
+          </div>
+          <div class="description">
+            <h1>{{send.title}}</h1>
+            <p>{{send.comment}}</p>
+          </div>
         </div>
       </div>
     </div>
+    {{/each}}
+
   </div>
+
+  <div class="ui bottom attached tab" data-tab="recibidos">
+    {{#each user.received as |receives|}}
+    <div class="ui items">
+      <div class="item">
+        <div class="ui small circular image">
+          <img src="{{receives.sender.profile_pic}}">
+        </div>
+        <div class="content">
+          <div class="header">{{receives.sender.name}} {{receives.sender.last_name}}</div>
+          <div class="meta">
+            <p class="date">{{receives.sender.created_at}}</p>
+            <p class="telephone">{{receives.sender.telephone}}</p>
+            <p class="address">{{receives.sender.address}}</p>
+          </div>
+          <div class="description">
+            <h1>{{receives.title}}</h1>
+            <p>{{receives.comment}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
 </div>
