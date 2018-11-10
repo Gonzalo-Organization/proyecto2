@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
@@ -18,5 +17,8 @@ a {
   overflow: hidden;
   position: absolute;
   z-index: -1; }
+
+.nav-grey {
+  background-color: #7c7a7a; }
 
 /*# sourceMappingURL=style.css.map */

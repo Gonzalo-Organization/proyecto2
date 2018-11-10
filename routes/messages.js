@@ -38,8 +38,4 @@ router.post("/", upload.array("images"), (req, res) => {
   });
 });
 
-router.get("/plantilla", (req, res) => {
-  res.render("mail/message");
-});
-
 module.exports = router;

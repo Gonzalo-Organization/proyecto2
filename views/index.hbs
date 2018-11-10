@@ -1,2 +1,305 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<!--<img class="main-image" src="https://res.cloudinary.com/royquiroz/image/upload/v1541820336/Tfixeo/annie-gray-382969-unsplash.jpg">-->
+
+<section class="background background-image">
+
+  <div class="background-box">
+    <div class="ui basic segment">
+      <img class="ui big centered image" src="/images/fix inc_one-liner.svg" alt="logo">
+      <div class="text">
+        <h1>
+          Personas ayudando personas
+        </h1>
+        <h2>
+          Ahorra tiempo y dinero en cualquier tipo de reparaciones
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ui section hidden divider"></div>
+<div class="ui three column center aligned stackable grid container">
+  <div class="column">
+    <i class="users massive icon"></i>
+    <h1 class="ui header">
+      Personas siempre disponibles
+    </h1>
+    <p>
+      Tecnicos capacitados siempre al alcance para auxiliar en cualquier momento.
+    </p>
+  </div>
+  <div class="column">
+    <i class="dollar sign massive icon"></i>
+    <h1 class="ui header">
+      Precios accesibles
+    </h1>
+    <p>
+      Precios al alcance de todos y para todo tipo de capital.
+    </p>
+  </div>
+  <div class="column">
+    <i class="handshake outline massive icon"></i>
+    <h1 class="ui header">
+      Seguridad
+    </h1>
+    <p>
+      Brindamos seguridad tanto al dar servicio como al recibirlo
+    </p>
+  </div>
+</div>
+<div class="ui section divider"></div>
+<div class="ui grid container">
+  <div class="ui relaxed divided items">
+    <div class="item">
+      <div class="middle aligned content">
+        <h1 class="ui header">
+          Gana <span class="disabled">dinero</span> prestando servicios
+        </h1>
+        <div class="description">
+          <p>
+            Se parte de nuestro equipo y genera ingresos extras utilizando las habilidades que haz aprendido
+            y ayudando a gente que lo necesita.
+          </p>
+        </div>
+      </div>
+      <div class="ui right floated large image">
+        <img src="https://res.cloudinary.com/royquiroz/image/upload/v1541827651/Tfixeo/randy-fath-531056-unsplash.jpg">
+      </div>
+    </div>
+    <div class="item">
+      <div class="ui large image">
+        <img src="https://res.cloudinary.com/royquiroz/image/upload/v1541827819/Tfixeo/helena-lopes-592971-unsplash.jpg">
+      </div>
+      <div class="middle aligned content">
+        <h1 class="ui header">
+          Busca gente que te puede <span class="disabled">ayudar</span>
+        </h1>
+        <div class="description">
+          <p>
+            Siempre encontraras gente que te puede ayudar a resolver problemas a la mayor brevedad posible, ahorra
+            tiempo, dinero y esfuerzo.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="middle aligned content">
+        <h1 class="ui header">
+          Siempre estara <span class="disabled">alguien</span> para ayudarte
+        </h1>
+        <div class="description">
+          <p>
+            Escrible tu problema, estamos seguros que alguien con gusto te ayudara a resolver tu problema, ya sea una
+            fuga,
+            un problema mecanico o a cambiar una instalacion electrica completa.
+          </p>
+        </div>
+      </div>
+      <div class="ui right floated large image">
+        <img src="https://res.cloudinary.com/royquiroz/image/upload/v1541828036/Tfixeo/bobby-rodriguezz-786110-unsplash.jpg">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui hidden divider"></div>
+<div class="ui footer container">
+  <div class="ui divider"></div>
+  <div class="ui two column grid">
+    <div class="column">
+      <p>
+        © 2018 Fix Inc.
+      </p>
+    </div>
+    <div class="right floated two wide column">
+      <a href="/">Back to top</a>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<style type="text/css">
+  .background {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .background-image {
+    background-image: url("https://res.cloudinary.com/royquiroz/image/upload/v1541828921/Tfixeo/hal-gatewood-336681-unsplash.jpg");
+    position: relative;
+    height: 100%;
+    height: calc(105vh - 90px);
+  }
+
+  .background-box {
+    padding: 7% 2%;
+    color: white;
+  }
+
+  .background-box>img {
+    align-content: center;
+  }
+
+  .text {
+    padding: 2% 0;
+    text-align: center;
+  }
+
+  #whole.segment {
+    height: 500px;
+  }
+
+  .ui.borderless.inverted.menu {
+    background-color: #2f2f2f;
+    border-radius: 4px;
+  }
+
+  .ui.borderless.inverted.menu .active.item {
+    background-color: black;
+  }
+
+  p code {
+    background-color: white;
+    border-radius: 4px;
+  }
+
+  #slide.row {
+    width: 300vw !important;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 5em;
+  }
+
+  #slide.row .column {
+    padding: 0 !important;
+  }
+
+  #slide.row .column h1.header {
+    font-size: 2.5em;
+  }
+
+  #slide.row .column p {
+    font-size: 1.4em;
+    line-height: 1.4;
+  }
+
+  #control.grid {
+    position: relative;
+    top: 7em;
+  }
+
+  #control.grid .ui.button {
+    box-shadow: none;
+  }
+
+  #control.grid .ui.button:hover {
+    background: transparent !important;
+  }
+
+  #control.grid .ui.button .icon {
+    color: #bfbfbf;
+  }
+
+  #control.grid .ui.button .icon:hover {
+    background: transparent;
+    color: white;
+  }
+
+  #bubble.row {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .ui.grid .ui.items .item .content {
+    align-self: center;
+  }
+
+  .ui.grid .ui.items .item .content h1 {
+    font-size: 3.5em;
+  }
+
+  .ui.grid .ui.items .item .content h1 span.disabled {
+    color: grey;
+  }
+
+  .ui.grid .ui.items .item .content p {
+    font-size: 1.5em;
+    line-height: 1.5;
+  }
+
+  .ui.footer.container {
+    font-size: 1.2em;
+  }
+</style>
+<script>
+  $(document).ready(function () {
+    $('.ui.dropdown').dropdown();
+
+    // make the corresponding bubble button change color
+    function activate() {
+      $('#bubble .button').eq($('#slide.row .column').first().attr('data-tab') - 1).addClass('green').siblings().removeClass('green');
+    };
+
+    // The slide or carousel effect here is actually a moving amination of a three viewport wide row
+    // left button: first make slide row animate to left
+    // then move the active column to the outer right
+    function leftMove() {
+      var columns = $('#slide .column');
+      var active = $('#slide .active.column');
+      var width = active.outerWidth();
+      $('#slide.row').animate({
+        left: -1 * width,
+        right: width
+      }, 600, "swing", function () {
+        active.removeClass('active');
+        active.next().addClass('active');
+        $(this).removeAttr('style');
+        active.detach().appendTo($('#slide.row'));
+        activate();
+      });
+    };
+    $('#left').click(leftMove);
+
+    // right button: first move the last column(right) to the first(left)
+    // at the same time, set the left and right position of the whole row, make visible column in the middle
+    // then make the row animate to right, and remove "left" and "right" style
+    function rightMove() {
+      var columns = $('#slide .column');
+      var active = $('#slide .active.column');
+      var width = active.outerWidth();
+      columns.last().detach().prependTo($('#slide.row'));
+      $('#slide.row').css({ "left": -width, "right": -width });
+      $('#slide.row').animate({
+        left: 0,
+        right: -2 * width
+      }, 600, "swing", function () {
+        active.removeClass('active');
+        columns.last().addClass('active');
+        $(this).removeAttr('style');
+        activate();
+      });
+    };
+    $('#right').click(rightMove);
+
+    // when click the small circular button, these happen:
+    // 1. make the whole row animate left and the corresponding column visible(left=0)
+    // 2. move all the columns on the left(prevAll) to right
+    // 3. remove the "left" position style of the row, make the target column at the very left
+    // 4. make the button "green" or any other color
+    $('#bubble .button').click(function () {
+      var index = $(this).index() + 1;
+      var target = $('[data-tab=' + index + ']');
+      var targetLeft = target.position().left;
+      $('#slide.row').animate({
+        left: -1 * targetLeft
+      }, 600, "swing", function () {
+        target.prevAll().detach().appendTo($(this));
+        $(this).removeAttr('style');
+        activate();
+      });
+    });
+
+    // by default, slide every 10 seconds
+    setInterval(leftMove, 10000);
+  });
+</script>
