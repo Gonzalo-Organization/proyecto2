@@ -95,8 +95,5 @@ $(".menu .item").tab();
 /*Select*/
 $("#multi-select").dropdown();
 
-/*Slider*/
-
-function mostrarData(data) {
-  console.log(data);
-}
+/*Dropdown*/
+$(".ui.dropdown").dropdown();

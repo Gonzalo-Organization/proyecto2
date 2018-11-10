@@ -4,6 +4,7 @@ const validations = require("../helpers/validations");
 const User = require("../models/User");
 const Problem = require("../models/Problem");
 const Message = require("../models/Message");
+const upload = require("../helpers/multer");
 
 router.get("/", validations.isMemberLoggedIn, (req, res) => {
   User.findById(req.user._id)
@@ -16,20 +17,6 @@ router.get("/", validations.isMemberLoggedIn, (req, res) => {
       });
     });
 });
-
-/*router.get("/search", validations.isMemberLoggedIn, (req, res) => {
-  User.find({ $or: [{ role: "M" }, { role: "BOTH" }] })
-    .then(users => {
-      res.render("search", {
-        member: true,
-        user: req.user,
-        users
-      });
-    })
-    .catch(err => {
-      throw new Error(err);
-    });
-});*/
 
 router.get("/problem", validations.isMemberLoggedIn, (req, res) => {
   Problem.find()
@@ -54,6 +41,18 @@ router.post("/update", validations.isMemberLoggedIn, (req, res) => {
       throw new Error(err);
     });
 });
+
+router.post(
+  "/image",
+  validations.isClientLoggedIn,
+  upload.single("photo"),
+  (req, res) => {
+    req.body.profile_pic = req.file.url;
+    User.findByIdAndUpdate(req.user._id, { $set: req.body }).then(() => {
+      res.redirect("/member");
+    });
+  }
+);
 
 router.get("/quote/:id", validations.isMemberLoggedIn, (req, res) => {
   Problem.findById(req.params.id)

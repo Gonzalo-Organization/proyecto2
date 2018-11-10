@@ -9,6 +9,10 @@ router.post("/", upload.array("images"), (req, res) => {
   const sender_id = req.body.sender;
   const received_id = req.body.addressee;
 
+  req.body.images = req.files.map(file => {
+    return file.url;
+  });
+
   Message.create(req.body).then(message => {
     User.findByIdAndUpdate(sender_id, {
       $push: { sent: message._id }
@@ -25,11 +29,12 @@ router.post("/", upload.array("images"), (req, res) => {
             id: receiver._id,
             name: `${receiver.name} ${receiver.last_name}`,
             email: receiver.email,
+            subject: message.title,
             filename: "message",
             data: message
           };
           mail.send(options);
-          res.redirect("/");
+          res.redirect("/client");
         });
       })
       .catch(e => {

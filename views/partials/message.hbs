@@ -35,21 +35,25 @@
 
   <div class="ui bottom attached tab" data-tab="recibidos">
     {{#each user.received as |receives|}}
-    <div class="ui items">
-      <div class="item">
-        <div class="ui small circular image">
-          <img src="{{receives.sender.profile_pic}}">
-        </div>
-        <div class="content">
-          <div class="header">{{receives.sender.name}} {{receives.sender.last_name}}</div>
-          <div class="meta">
-            <p class="date">{{receives.sender.created_at}}</p>
-            <p class="telephone">{{receives.sender.telephone}}</p>
-            <p class="address">{{receives.sender.address}}</p>
-          </div>
-          <div class="description">
-            <h3>{{receives.title}}</h3>
-            <p>{{receives.comment}}</p>
+    <div class="ui basic segment">
+      <div class="ui floating message">
+        <div class="ui items">
+          <div class="item">
+            <div class="ui small circular image">
+              <img src="{{receives.sender.profile_pic}}">
+            </div>
+            <div class="content">
+              <div class="header">{{receives.sender.name}} {{receives.sender.last_name}}</div>
+              <div class="meta">
+                <p class="date">{{receives.sender.created_at}}</p>
+                <p class="telephone">{{receives.sender.telephone}}</p>
+                <p class="address">{{receives.sender.address}}</p>
+              </div>
+              <div class="description">
+                <h3>{{receives.title}}</h3>
+                <p>{{receives.comment}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

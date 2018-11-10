@@ -1,72 +1,71 @@
-<div class="ui basic segment">
+<div class="container">
+  <div class="ui basic segment">
 
-  <div class="ui items">
-    <div class="item">
-      <div class="ui small circular image">
-        <img src="{{problem.author.profile_pic}}">
-      </div>
-      <div class="content">
-        <div class="header">{{problem.author.name}} {{problem.author.last_name}}</div>
-        <div class="meta">
-          <span class="price">$ {{problem.maxBudget}}</span>
-          <span class="date">{{problem.updated_at}}</span>
+    <div class="ui items">
+      <div class="item">
+        <div class="ui small circular image">
+          <img src="{{problem.author.profile_pic}}">
         </div>
-        <div class="description">
-          <p>{{problem.description}}</p>
-          {{#if member}} <button class="ui blue button" id="quote">Ofertar</button> {{/if}}
+        <div class="content">
+          <div class="header">{{problem.author.name}} {{problem.author.last_name}}</div>
+          <div class="meta">
+            <span class="price">$ {{problem.maxBudget}}</span>
+            <span class="date">{{problem.updated_at}}</span>
+          </div>
+          <div class="description">
+            <p>{{problem.description}}</p>
+            {{#if member}} <button class="ui blue button" id="quote">Ofertar</button> {{/if}}
+          </div>
         </div>
-      </div>
 
-      <div class="extra">
-        <div class="ui massive right floated horizontal list">
-          <div class="item">
-            {{#each problem.images as |image|}}
-            <img class="ui small bordered rounded image" src="{{image}}">
-            {{/each}}
+        <div class="extra">
+          <div class="ui massive right floated horizontal list">
+            <div class="item">
+              {{#each problem.images as |image|}}
+              <img class="ui small bordered rounded image" src="{{image}}">
+              {{/each}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="ui tiny modal quote">
+      <i class="close icon"></i>
+      {{> quoteForm}}
+    </div>
+
+    <!--Lista de ofertantes-->
+    <div class="ui divided list">
+      {{#each problem.quotes as |quote|}}
+      <div class="item">
+        <div class="right floated content">
+          {{#if ../problem.accepted}}
+          <!--<button class="ui disabled grey button">Finalizado</button>-->
+          {{else}}
+          <div>
+            {{#if ../client}}
+            <form action="/quote/acept" method="POST">
+              <input type="text" name="problem_id" value="{{problem._id}}" hidden>
+              <input type="text" name="quote_id" value="{{quote._id}}" hidden>
+              <button type="submit" class="ui blue button">Aceptar</button>
+            </form>
+            {{/if}}
+          </div>
+          {{/if}}
+        </div>
+        <img class="ui avatar image" src="{{quote.user_create.profile_pic}}">
+        <div class="content">
+          <a class="header">{{quote.user_create.name}} {{quote.user_create.last_name}}</a>
+          <div class="description">
+            <p>{{quote.comment}} Costo: <strong>$ {{quote.price}}</strong></p>
           </div>
         </div>
       </div>
-
+      {{/each}}
     </div>
+
   </div>
-
-
-  <div class="ui tiny modal quote">
-    <i class="close icon"></i>
-    {{> quoteForm}}
-  </div>
-
-  <!--Lista de ofertantes-->
-  <div class="ui divided list">
-    {{#each problem.quotes as |quote|}}
-    <div class="item">
-      <div class="right floated content">
-        {{#if ../problem.accepted}}
-        <!--<button class="ui disabled grey button">Finalizado</button>-->
-        {{else}}
-        <div>
-          {{#if ../client}}
-          <form action="/quote/acept" method="POST">
-            <input type="text" name="problem_id" value="{{problem._id}}" hidden>
-            <input type="text" name="quote_id" value="{{quote._id}}" hidden>
-            <button type="submit" class="ui blue button">Aceptar</button>
-          </form>
-          {{/if}}
-        </div>
-        {{/if}}
-      </div>
-      <img class="ui avatar image" src="{{quote.user_create.profile_pic}}">
-      <div class="content">
-        <a class="header">{{quote.user_create.name}} {{quote.user_create.last_name}}</a>
-        <div class="description">
-          <p>{{quote.comment}} Costo: <strong>$ {{quote.price}}</strong></p>
-        </div>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-
-  <!--<pre>{{problem.accepted}}</pre>-->
-
-
 </div>

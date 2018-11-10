@@ -1,14 +1,16 @@
-<h1> Bienvenido {{user.name}} {{user.last_name}}</h1>
+<div class="container">
+  <h1> Bienvenido {{user.name}} {{user.last_name}}</h1>
 
-<div class="ui basic segment">
-  <div class="ui four cards">
-    {{#each users as |user|}}
-    {{> memberCard user}}
-    {{/each}}
+  <div class="ui basic segment">
+    <div class="ui four cards">
+      {{#each users as |user|}}
+      {{> memberCard user}}
+      {{/each}}
+    </div>
   </div>
-</div>
 
-<div class="ui tiny modal" id="message">
-  <i class="close icon"></i>
-  {{> messageForm}}
+  <div class="ui tiny modal" id="message">
+    <i class="close icon"></i>
+    {{> messageForm}}
+  </div>
 </div>

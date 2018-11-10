@@ -32,7 +32,8 @@ router.post("/register", (req, res) => {
       const options = {
         id: user._id,
         name: `${user.name} ${user.last_name}`,
-        email: user.email
+        email: user.email,
+        subject: "Gracias por registrarte"
       };
       //mail.send(options);
       res.redirect("/member");
@@ -41,6 +42,13 @@ router.post("/register", (req, res) => {
     .catch(err => {
       res.status(500).render("index", { err, msg: "No pudimos registrarte" });
     });
+});
+
+router.get("/verify/:id", (req, res) => {
+  req.body.active = true;
+  User.findByIdAndUpdate(req.params.id, { $set: req.body }).then(() => {
+    res.redirect("/");
+  });
 });
 
 router.post("/logout", (req, res) => {

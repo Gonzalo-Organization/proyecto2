@@ -1,7 +1,3 @@
-<!--<div>
-  {{user}}
-</div>-->
-
 <div class="ui segment">
   <form class="ui form" action="/{{#if member}}member{{else}}client{{/if}}/update" method="POST">
     <h4 class="ui dividing header">Perfil</h4>
@@ -46,7 +42,7 @@
     <div class="field">
       <div class="ui left icon input">
         <i class="user icon"></i>
-        <input type="text" name="address" value="{{user.address}}" placeholder="Direccion">
+        <input type="text" id="autocomplete" name="address" value="{{user.address}}" placeholder="Direccion">
       </div>
     </div>
     {{#if member}}
@@ -67,17 +63,17 @@
   </form>
 </div>
 
-<!--
-<div class="field">
-  <div class="ui left icon input">
-    <i class="user icon"></i>
-    <input type="password" name="password" placeholder="Nuevo Password">
-  </div>
-</div>
-<div class="field">
-  <div class="ui left icon input">
-    <i class="user icon"></i>
-    <input type="password" name="password-confirm" placeholder="Confirmar nuevo password">
-  </div>
-</div>
--->
+
+<script>
+  window.onload = function () {
+    const input = document.getElementById("autocomplete");
+    const dropdown = new google.maps.places.Autocomplete(input);
+    dropdown.addListener("place_changed", () => {
+      console.log(dropdown.getPlace());
+      let place = dropdown.getPlace();
+      lat.value = place.geometry.location.lat();
+      lng.value = place.geometry.location.lng();
+      name.value = place.name;
+    })
+  }
+</script>

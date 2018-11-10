@@ -18,7 +18,7 @@ a {
   position: absolute;
   z-index: -1; }
 
-.nav-grey {
-  background-color: #7c7a7a; }
+.container {
+  padding: 8% 15px; }
 
 /*# sourceMappingURL=style.css.map */

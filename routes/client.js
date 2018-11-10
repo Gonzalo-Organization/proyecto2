@@ -4,6 +4,7 @@ const validations = require("../helpers/validations");
 const User = require("../models/User");
 const Problem = require("../models/Problem");
 const Message = require("../models/Message");
+const upload = require("../helpers/multer");
 
 router.get("/", validations.isClientLoggedIn, (req, res) => {
   User.findById(req.user._id)
@@ -42,6 +43,18 @@ router.post("/update", validations.isClientLoggedIn, (req, res) => {
       throw new Error(err);
     });
 });
+
+router.post(
+  "/image",
+  validations.isClientLoggedIn,
+  upload.single("photo"),
+  (req, res) => {
+    req.body.profile_pic = req.file.url;
+    User.findByIdAndUpdate(req.user._id, { $set: req.body }).then(() => {
+      res.redirect("/client");
+    });
+  }
+);
 
 // ruta para los problemas
 router.get("/problem", validations.isClientLoggedIn, (req, res) => {
