@@ -5,6 +5,7 @@ const validations = require("../helpers/validations");
 /* GET home page */
 router.get("/", (req, res) => {
   let user = req.isAuthenticated();
+  console.log(user);
 
   res.render("index", {
     user
