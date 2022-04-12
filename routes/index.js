@@ -1,15 +1,24 @@
 const express = require("express");
 const router = express.Router();
+const User = require("../models/User");
 const validations = require("../helpers/validations");
 
 /* GET home page */
 router.get("/", (req, res) => {
-  let user = req.isAuthenticated();
-  console.log(user);
+  let isAuth = req.isAuthenticated();
 
-  res.render("index", {
-    user
-  });
+  if (isAuth) {
+    User.findById(req.user._id).then((user) => {
+      res.render("index", {
+        user,
+        [user.role.toLowerCase()]: true,
+      });
+    });
+  } else {
+    res.render("index", {
+      user: isAuth,
+    });
+  }
 });
 
 router.get("/logout", (req, res) => {
