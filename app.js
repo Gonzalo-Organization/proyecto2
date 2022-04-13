@@ -11,16 +11,19 @@ const path = require("path");
 const passport = require("./helpers/passport");
 const session = require("express-session");
 
-const connectToMongo = async () => {
-  await mongoose.connect(process.env.DB, {
-    useNewUrlParser: true,
+mongoose
+  .connect(
+    process.env.DB,
+    { useNewUrlParser: true }
+  )
+  .then(x => {
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
+  })
+  .catch(err => {
+    console.error("Error connecting to mongo", err);
   });
-  return mongoose;
-};
-
-connectToMongo().then(async (x) => {
-  console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
-});
 
 const app_name = require("./package.json").name;
 const debug = require("debug")(
@@ -33,7 +36,7 @@ app.use(
   session({
     secret: process.env.SECRET,
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: true
   })
 );
 
@@ -52,7 +55,7 @@ app.use(
   require("node-sass-middleware")({
     src: path.join(__dirname, "public"),
     dest: path.join(__dirname, "public"),
-    sourceMap: true,
+    sourceMap: true
   })
 );
 
